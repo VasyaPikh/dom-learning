@@ -1,34 +1,16 @@
-let enterEventCount = 0;
-let leaveEventCount = 0;
-let pressClickCount = 0;
-const mouseTarget = document.getElementById('button');
-const unorderedList = document.getElementById('text-here');
-const output = document.getElementById('output');
+const x = document.getElementById("btnClick");
+x.addEventListener("mouseover", onmouse);
+x.addEventListener("click", pressBtn);
+x.addEventListener("mouseout", offmouse);
 
-output.addEventListener('onclick', e =>{
-    pressClickCount++;
-    addClickItem('I was pressed! ');
-});
+function onmouse() {
+  document.getElementById("text").innerHTML += "Mouse on me!<br>";
+}
 
+function pressBtn() {
+  document.getElementById("text").innerHTML += "I was pressed!<br>";
+}
 
-mouseTarget.addEventListener('mouseenter', e => {
-  enterEventCount++;
-  addListItem('Mouse on me! ');
-});
-
-mouseTarget.addEventListener('mouseleave', e => {
-  leaveEventCount++;
-  addListItem('Mouse is not on me! ');
-});
-
-
-function addListItem(text) {
-  let newTextNode = document.createTextNode(text);
-
-  let newListItem = document.createElement("p");
-
-
-  newListItem.appendChild(newTextNode);
-
-  unorderedList.appendChild(newListItem);
+function offmouse() {
+  document.getElementById("text").innerHTML += "Mouse is not on me!<br>";
 }
